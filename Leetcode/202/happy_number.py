@@ -37,3 +37,21 @@
 
 #     1 <= n <= 231 - 1
 
+class Solution:
+    def isHappy(self, n: int) -> bool:
+        
+        def foo(n: int):
+            l = [int(x)**2 for x in str(n)]
+            return sum(l)
+        
+        seen = {n}
+        while n != 1:
+            new_n = foo(n)
+            
+            if new_n in seen:
+                return False
+            
+            seen.add(new_n)
+            n = new_n
+        return True
+
