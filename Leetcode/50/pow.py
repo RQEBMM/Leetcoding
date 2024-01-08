@@ -38,3 +38,22 @@
 class Solution:
     def myPow(self, x: float, n: int) -> float:
         return x**n
+
+
+
+# The Hard Way:
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+
+        if n == 0:
+            return 1
+        elif n > 0:
+            new_x = 1
+        else:
+            new_x = 1
+            x     = abs(1/x)
+
+        for _ in range(abs(n)):
+            new_x *= x
+
+        return new_x
