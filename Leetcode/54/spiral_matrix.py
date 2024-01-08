@@ -27,6 +27,20 @@
 #     1 <= m, n <= 10
 #     -100 <= matrix[i][j] <= 100
 
+# The Easy Way: (No pandas on Leetcode)
+class Solution:
+    def spiralOrder(self, board: List[List[int]]) -> List[int]:
+      df = pd.DataFrame(board).T
+      ret = list(df.pop(df.columns[0]))
+      while not df.empty:
+          temp_df = df.T.reset_index()
+          df = temp_df[temp_df.columns[::-1]]
+          ret += list(df.pop(df.columns[0]))
+      return ret
+
+board = [[1,2,3],[4,5,6],[7,8,9]]
+Solution().spiralOrder(board)
+
 # The Hard Way:
 class Solution:
     def spiralOrder(self, board: List[List[int]]) -> List[int]:
